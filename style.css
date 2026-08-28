@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+/* body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  background-color: #332202;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+#navbar li {
+  list-style: none;
+  color: #fff;
+  padding: 10px 20px;
+  
+}
+#navbar li a {
+  text-decoration: none;
+  color: #dcc2d4;
+  transition: all 0.3s ease;
+  
+}
+#navbar li a:hover {
+  text-decoration: none;
+  color: #332202;
+  background-color: #dcc2d4;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 100px;
+
+} */
+@import "tailwindcss";
+
+:root {
+  --color-brand: #87576b;
+  --color-brand-dark: #714759;
+  --color-ink: #090909;
+  --color-soft: #f7f7f7;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: white;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: white;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.container-wide {
+  width: min(100% - 48px, 1280px);
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .container-wide {
+    width: min(100% - 32px, 1280px);
+  }
+}
