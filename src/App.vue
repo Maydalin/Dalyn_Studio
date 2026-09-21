@@ -6,7 +6,7 @@ const cartItems = ref([])
 
 function addToCart(product) {
   const existingProduct = cartItems.value.find(
-    (item) => item.id === product.id
+    (item) => item.id === product.id && item.selectedColor?.name === product.selectedColor?.name
   )
 
   if (existingProduct) {
@@ -54,7 +54,7 @@ const cartCount = computed(() => {
 </script>
 <template>
   <div class="page-shell">
-    <navbar/>
+    <navbar :cart-count="cartCount"/>
     <main>
        <RouterView
     :cart-count="cartCount"

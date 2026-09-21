@@ -2,27 +2,19 @@
 const categories = [
   { name: 'MUVA', slug: 'muva', image: 'public/muva2.jpg' },
   { name: 'SONGMONT', slug: 'songmont', image: 'public/songmont.jpg' },
-  { name: 'CLOTHING', slug: 'clothing', image: 'public/clothing.webp' },
   { name: 'MILOOEY', slug: 'milooey', image: 'public/milooey1.jpg' },
   { name: 'ROCKFISH', slug: 'rockfish', image: 'public/rockfish2.jpg' },
-  { name: 'PANE', slug: 'pane', image: 'public/pane1.avif' },
 ]
+
 </script>
 
 <template>
   <section class="container-wide pb-12 pt-12 sm:pb-20 sm:pt-14">
-    <div class="mb-10 text-center sm:mb-11">
-      <h1 class="text-[29px] font-black tracking-[-0.03em] sm:text-[36px]">
-        GOOD QUALITY GOOD EXPERIENCE
-      </h1>
-      <p class="mt-1.5 text-[21px] sm:text-[24px] text-center">Explore a product</p>
-    </div>
-
     <div class="product-brand-grid">
       <router-link
         v-for="category in categories"
         :key="category.name"
-        :to="category.slug === 'muva' ? '/muva' : '/'"
+        :to="`/${category.slug}`"
         class="category-card"
       >
         <img :src="category.image" :alt="category.name" />
@@ -39,10 +31,10 @@ const categories = [
 .product-brand-grid {
   display: grid;
   /* EXACTLY 3 columns */
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   /* EXACTLY 2 rows */
   grid-template-rows: repeat(2, auto);
-
+  margin-top: 20px;
   column-gap: 20px;
   row-gap: 20px;
   width: 100%;
@@ -53,7 +45,7 @@ const categories = [
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 20px;
   text-decoration: none;
 }
 .category-card img,
@@ -84,7 +76,8 @@ const categories = [
   place-items: center;
   color: white;
   font-size: clamp(26px, 2.3vw, 34px);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 32px;
   letter-spacing: -0.03em;
 }
 @media (min-width: 1024px) {

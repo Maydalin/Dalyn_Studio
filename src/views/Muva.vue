@@ -8,127 +8,88 @@ const products = [
     id: 1,
     name: 'Machi Bag',
     price: '1,850,000 LAK',
-    image: 'public/machi brown.png',
     colors: [
       {
         name: 'Brown',
         value: '#4b2a1a',
+        image: 'public/machi brown.png',
       },
       {
         name: 'Blue',
         value: '#34465a',
+        image: 'public/machi blue.png',
       },
       {
         name: 'Beige',
         value: '#bb8a50',
+        image: 'public/machi beige.png',
       },
     ],
     active: 0,
   },
   {
     id: 2,
-    name: 'Machi Bag',
-    price: '1,850,000 LAK',
-    image: 'public/machi blue.png',
-    colors: [
-      {
-        name: 'Brown',
-        value: '#4b2a1a',
-      },
-      {
-        name: 'Blue',
-        value: '#34465a',
-      },
-      {
-        name: 'Beige',
-        value: '#bb8a50',
-      },
-    ],
-    active: 1,
-  },
-  {
-    id: 3,
-    name: 'Machi Bag',
-    price: '1,850,000 LAK',
-    image: 'public/machi beige.png',
-    colors: [
-      {
-        name: 'Brown',
-        value: '#4b2a1a',
-      },
-      {
-        name: 'Blue',
-        value: '#34465a',
-      },
-      {
-        name: 'Beige',
-        value: '#bb8a50',
-      },
-    ],
-    active: 2,
-  },
-  {
-    id: 4,
     name: 'Garden Bag',
-    price: '1,550,000 LAK',
-    image: 'public/garden blue.png',
+    price: '1,850,000 LAK',
     colors: [
       {
         name: 'Blue',
         value: '#b9d1df',
+        image: 'public/garden blue.png',
       },
       {
         name: 'Yellow',
         value: '#ead48d',
+        image: 'public/garden yellow.png',
       },
       {
         name: 'Pink',
         value: '#d6b9bf',
+        image: 'public/garden pink.png',
       },
     ],
     active: 0,
   },
   {
-    id: 5,
-    name: 'Garden Bag',
-    price: '1,550,000 LAK',
-    image: 'public/garden yellow.png',
+    id: 3,
+    name: 'Puff Bag',
+    price: '1,850,000 LAK',
     colors: [
       {
-        name: 'Blue',
-        value: '#b9d1df',
+        name: 'pink',
+        value: '#D0A6A4',
+        image: 'public/puff pink.jpeg',
       },
       {
-        name: 'Yellow',
-        value: '#ead48d',
-      },
-      {
-        name: 'Pink',
-        value: '#d6b9bf',
+        name: 'Brown',
+        value: '#341A13',
+        image: 'public/puff brown.jpeg',
       },
     ],
-    active: 1,
+    active: 0,
   },
   {
-    id: 6,
-    name: 'Garden Bag',
-    price: '1,550,000 LAK',
-    image: 'public/garden pink.png',
+    id: 4,
+    name: 'Candy Bag',
+    price: '2,550,000 LAK',
     colors: [
       {
-        name: 'Blue',
-        value: '#b9d1df',
+        name: 'Red',
+        value: '#892C2B',
+        image: 'public/candy red.jpeg',
       },
       {
-        name: 'Yellow',
-        value: '#ead48d',
+        name: 'Brown',
+        value: '#543D35',
+        image: 'public/candy brown.jpeg',
       },
       {
-        name: 'Pink',
-        value: '#d6b9bf',
+        name: 'Black',
+        value: '#000',
+        image: 'public/candy black.jpeg',
       },
     ],
-    active: 2,
+    active: 0,
   },
 ]
 
@@ -140,34 +101,31 @@ function selectColor(productId, index) {
 
 function add(product) {
   const selectedIndex = selectedColors.value[product.id]
+  const selectedColor = product.colors[selectedIndex]
 
   const productToAdd = {
     ...product,
-    selectedColor: product.colors[selectedIndex],
+
+    // Selected variant
+    selectedColor: selectedColor,
     selectedColorIndex: selectedIndex,
+
+    // Save selected image directly for Cart
+    image: selectedColor.image,
   }
 
-  // Add product to cart
   emit('add-to-cart', productToAdd)
 
-  // Show notification
-  notificationProduct.value = product.name
+  notificationProduct.value = `${product.name} - ${selectedColor.name}`
   showNotification.value = true
 
-  // Clear previous timer
   clearTimeout(notificationTimer)
 
-  // Hide after 2.5 seconds
   notificationTimer = setTimeout(() => {
     showNotification.value = false
   }, 2500)
 }
-defineProps({
-  cartCount: {
-    type: Number,
-    default: 0,
-  },
-})
+
 const showNotification = ref(false)
 const notificationProduct = ref('')
 
@@ -199,22 +157,17 @@ function buyNow(product) {
 
 <template>
   <section class="container-wide pb-12 pt-8 sm:pb-20 sm:pt-10">
-    <button type="button" class="back" @click="$router.back()">
+    <button type="button" class="back-button" @click="$router.back()">
       <i class="fa-solid fa-arrow-left"></i>Back
     </button>
     <div class="brand-header">
       <div class="brand-title">MUVA</div>
-
-      <router-link to="/cart" class="cart-button">
-        <i class="fa-solid fa-bag-shopping"></i>
-        Cart ({{ cartCount }})
-      </router-link>
     </div>
 
     <div class="product-grid">
       <article v-for="product in products" :key="product.id" class="product-card">
         <div class="product-photo">
-          <img :src="product.image" :alt="product.name" />
+          <img :src="product.colors[selectedColors[product.id]].image" :alt="product.name" />
         </div>
         <div class="product-info">
           <div class="product-details">
@@ -238,7 +191,9 @@ function buyNow(product) {
 
           <div class="mt-3 flex gap-2">
             <button type="button" class="add-button" @click="add(product)">Add Cart</button>
-            <button type="button" class="buy-button" @click="buyNow(product)">Buy now</button>
+            <button type="button" class="buy-button" @click="$router.push('/checkoutpage')">
+              Buy now
+            </button>
           </div>
         </div>
       </article>
@@ -261,24 +216,24 @@ function buyNow(product) {
 </template>
 
 <style scoped>
-.back {
+.back-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 38px;
+  height: 36px;
+  padding: 0 16px;
   border: none;
   border-radius: 999px;
-  background: white;
-  color: #000;
-  font-size: 16px;
-  font-weight: 500;
+  background: #f5f5f5;
   cursor: pointer;
+  font-size: 16px;
   white-space: nowrap;
   transition:
     background 0.2s ease,
     transform 0.2s ease;
 }
+
 .brand-header {
   display: flex;
   align-items: center;
@@ -293,35 +248,6 @@ function buyNow(product) {
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.03em;
-}
-.cart-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  gap: 8px;
-  height: 38px;
-  padding: 0 20px;
-  border: none;
-  border-radius: 999px;
-  background: #87576b;
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.cart-button:hover {
-  background: #714759;
-  transform: translateY(-1px);
-}
-
-.cart-button i {
-  font-size: 13px;
 }
 
 .product-grid {
@@ -442,7 +368,7 @@ function buyNow(product) {
   margin-right: 8px;
 }
 .buy-button {
-  width: 60%;
+  width: 70%;
   flex: 1;
   border: 1px solid #87576b;
   color: white;

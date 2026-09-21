@@ -1,5 +1,12 @@
 '
-<script setup></script>
+<script setup>
+defineProps({
+  cartCount: {
+    type: Number,
+    default: 0,
+  },
+})
+</script>
 
 <template>
   <header class="header">
@@ -7,9 +14,10 @@
     <router-link to="/" aria-label="DALYNN home" class="flex shrink-0 items-center">
       <img src="/logo.png" alt="DALYNN" class="h-auto w-[140px] sm:w-[160px]" />
     </router-link>
+
     <!-- Social buttons -->
     <div class="social-buttons">
-        <a
+      <a
         class="social-pill shrink-0"
         href="https://www.instagram.com/dalyn_studio?igsh=aHdvbzZucHN3aHVp&utm_source=qr"
       >
@@ -40,6 +48,10 @@
         <span>Whatsapp</span>
       </a>
       <!-- Cart count -->
+      <router-link to="/cart" class="cart-button">
+        <i class="fa-solid fa-bag-shopping"></i>
+         ({{ cartCount }})
+      </router-link>
     </div>
   </header>
 </template>
@@ -49,7 +61,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 20px 30px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .social-buttons {
@@ -97,5 +109,35 @@
   .social-pill span {
     display: none;
   }
+}
+.cart-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 4px;
+  height: 38px;
+  padding: 0 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 999px;
+  background: #87576b;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cart-button:hover {
+  background: #714759;
+  transform: translateY(-1px);
+}
+
+.cart-button i {
+  font-size: 16px;
 }
 </style>

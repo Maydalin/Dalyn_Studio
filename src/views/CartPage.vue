@@ -52,8 +52,6 @@ function formatPrice(price) {
         Back
       </button>
 
-      <h1>Cart</h1>
-
       <span class="cart-count"> {{ cartCount }} items </span>
     </div>
 
@@ -95,13 +93,11 @@ function formatPrice(price) {
 
             <!-- Quantity -->
 
-            
-              <button class="quantity-decrease" type="button" @click="decrease(item.id)">−</button>
-              <span>
-                {{ item.quantity }}
-              </span>
-              <button class="quantity-add" type="button" @click="increase(item.id)">+</button>
-          
+            <button class="quantity-decrease" type="button" @click="decrease(item.id)">−</button>
+            <span>
+              {{ item.quantity }}
+            </span>
+            <button class="quantity-add" type="button" @click="increase(item.id)">+</button>
           </div>
           <!-- Remove -->
           <button type="button" class="remove-button" @click="removeItem(item.id)">
@@ -124,17 +120,15 @@ function formatPrice(price) {
 
           <strong> {{ formatPrice(total) }} LAK </strong>
         </div>
-
-        <button type="button" class="checkout-button">Checkout</button>
+        <button @click="$router.push('/checkoutpage')" class="checkout-button">Checkout</button>
       </aside>
     </div>
-    
   </section>
 </template>
 
 <style scoped>
 .cart-page {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 30px 24px 80px;
 }
@@ -164,18 +158,20 @@ function formatPrice(price) {
 
 .back-button {
   display: flex;
-
   align-items: center;
-
+  justify-content: center;
   gap: 8px;
-
+  height: 36px;
+  padding: 0 16px;
   border: none;
-
-  background: transparent;
-
-  font-size: 15px;
-
+  border-radius: 999px;
+  background: #f5f5f5;
   cursor: pointer;
+  font-size: 16px;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 /* Empty */
@@ -300,7 +296,7 @@ function formatPrice(price) {
   margin-top: 15px;
 }
 
-.quantity-add{
+.quantity-add {
   margin-left: 10px;
   width: 28px;
   height: 28px;
@@ -310,7 +306,7 @@ function formatPrice(price) {
   color: white;
   cursor: pointer;
 }
-.quantity-decrease{
+.quantity-decrease {
   margin-right: 10px;
   width: 28px;
   height: 28px;
