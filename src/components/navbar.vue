@@ -12,7 +12,7 @@ defineProps({
   <header class="header">
     <!-- Logo -->
     <router-link to="/" aria-label="DALYNN home" class="flex shrink-0 items-center">
-      <img src="/logo.png" alt="DALYNN" class="h-auto w-[140px] sm:w-[160px]" />
+      <img src="/logo2.png" alt="DALYNN" class="h-auto w-[140px] sm:w-[160px]" />
     </router-link>
 
     <!-- Social buttons -->
@@ -50,7 +50,7 @@ defineProps({
       <!-- Cart count -->
       <router-link to="/cart" class="cart-button">
         <i class="fa-solid fa-bag-shopping"></i>
-         ({{ cartCount }})
+        ({{ cartCount }})
       </router-link>
     </div>
   </header>
@@ -69,6 +69,7 @@ defineProps({
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  
 }
 .social-pill {
   display: inline-flex;
@@ -78,9 +79,9 @@ defineProps({
   min-width: 110px;
   height: 39px;
   padding: 0 13px;
-  border: 1.3px solid #87576b;
+  border: 1.3px solid #a2c2dd;
   border-radius: 999px;
-  color: #87576b;
+  color: #a2c2dd;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
@@ -89,8 +90,9 @@ defineProps({
     color 0.2s;
 }
 .social-pill:hover {
-  background: #87576b;
-  color: white;
+  background: #feefb8;
+  color: #a2c2dd;
+  border: none;
 }
 .social-pill svg {
   width: 17px;
@@ -98,6 +100,7 @@ defineProps({
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
+  
 }
 
 @media (max-width: 700px) {
@@ -105,7 +108,9 @@ defineProps({
     min-width: 39px;
     width: 39px;
     padding: 0;
+    
   }
+  
   .social-pill span {
     display: none;
   }
@@ -121,8 +126,9 @@ defineProps({
   margin: 0 10px;
   border: none;
   border-radius: 999px;
-  background: #87576b;
-  color: white;
+  color: #a2c2dd;
+  background: #feefb8;
+
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -133,11 +139,14 @@ defineProps({
 }
 
 .cart-button:hover {
-  background: #714759;
+  background: #feefb8;
   transform: translateY(-1px);
+  color: #a2c2dd;
 }
 
 .cart-button i {
   font-size: 16px;
+  
+
 }
 </style>

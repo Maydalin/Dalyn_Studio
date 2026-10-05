@@ -6,23 +6,32 @@ const emit = defineEmits(['add-to-cart'])
 const products = [
   {
     id: 1,
-    name: 'Machi Bag',
-    price: '1,850,000 LAK',
+    name: 'Bella Shoes',
+    price: '2,050,000 LAK',
     colors: [
       {
-        name: 'Brown',
-        value: '#4b2a1a',
-        image: 'public/machi brown.png',
+        name: 'Green',
+        value: '#9FAC8D',
+        size: '36,37,38,39,40',
+        image: 'public/bella green.jpg',
       },
       {
-        name: 'Blue',
+        name: 'Navy',
         value: '#34465a',
-        image: 'public/machi blue.png',
+        size: '36,37,38,39,40',
+        image: 'public/bella navy.jpg',
       },
       {
-        name: 'Beige',
-        value: '#bb8a50',
-        image: 'public/machi beige.png',
+        name: 'Black',
+        value: '#000',
+        size: '36,37,38,39,40',
+        image: 'public/bella black.jpg',
+      },
+       {
+        name: 'Red',
+        value: '#892C2B',
+        size: '36,37,38,39,40',
+        image: 'public/bella red.jpg',
       },
     ],
     active: 0,
@@ -145,6 +154,7 @@ function buyNow(product) {
 ສິນຄ້າ: ${product.name}
 ລາຄາ: ${product.price}
 ສີ: ${selectedColor.name}
+size: ${selectedColor.size}
 
 ຂໍລາຍລະອຽດການສັ່ງຊື້ສິນຄ້າ,ຂໍຂອບໃຈ!
   `.trim()
@@ -157,11 +167,11 @@ function buyNow(product) {
 
 <template>
   <section class="container-wide pb-12 pt-8 sm:pb-20 sm:pt-10">
-    <button type="button" class="back-button" @click="$router.back()">
+    <!-- <button type="button" class="back-button" @click="$router.back()">
       <i class="fa-solid fa-arrow-left"></i>Back
-    </button>
+    </button> -->
     <div class="brand-header">
-      <div class="brand-title">MUVA</div>
+      <div class="brand-title">ROCKFISH</div>
     </div>
 
     <div class="product-grid">
@@ -187,7 +197,9 @@ function buyNow(product) {
                 @click="selectColor(product.id, index)"
               ></button>
             </div>
+            
           </div>
+            
 
           <div class="mt-3 flex gap-2">
             <button type="button" class="add-button" @click="add(product)">Add Cart</button>
@@ -243,11 +255,15 @@ function buyNow(product) {
   margin-top: 10px;
 }
 .brand-title {
-  margin: 0;
-  font-size: 40px;
+  margin-top: 0;
+  font-size: 36px;
+  padding: 10px 20px;
+  border-radius: 999px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.03em;
+  background: #feefb8;
+  color: #a2c2dd;
 }
 
 .product-grid {
@@ -346,7 +362,7 @@ function buyNow(product) {
 }
 
 .color-dot.selected {
-  outline: 1px solid #87576b;
+  outline: 1px solid #432f2e;
   outline-offset: 2px;
 }
 
@@ -362,25 +378,27 @@ function buyNow(product) {
 }
 .add-button {
   width: 94px;
-  border: 1px solid #87576b;
-  color: #87576b;
+  border: 1px solid #a2c2dd;
+  color: #a2c2dd;
   background: transparent;
   margin-right: 8px;
 }
 .buy-button {
-  width: 60%;
+  width: 70%;
   flex: 1;
-  border: 1px solid #87576b;
+  border: 1px solid #a2c2dd;
   color: white;
-  background: #87576b;
+  background: #a2c2dd;
 }
 .add-button:hover {
   background: #d9d9d9;
-  color: #87576b;
+  color: #a2c2dd;
   border: none;
 }
 .buy-button:hover {
-  background: #714759;
+  background: #feefb8;
+  border: none;
+  color: #a2c2dd;
 }
 
 @media (max-width: 639px) {

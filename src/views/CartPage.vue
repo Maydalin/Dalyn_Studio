@@ -46,15 +46,15 @@ function formatPrice(price) {
   <section class="cart-page">
     <!-- Header -->
 
-    <div class="cart-header">
+    <!-- <div class="cart-header">
       <button type="button" class="back-button" @click="$router.back()">
         <i class="fa-solid fa-arrow-left"></i>
         Back
       </button>
 
       <span class="cart-count"> {{ cartCount }} items </span>
-    </div>
-
+    </div> -->
+    <span class="cart-count"> {{ cartCount }} items </span>
     <!-- Empty cart -->
 
     <div v-if="cartItems.length === 0" class="empty-cart">
@@ -150,7 +150,8 @@ function formatPrice(price) {
 
 .cart-count {
   font-size: 14px;
-
+  position: absolute;
+  right: 40px;
   color: #666;
 }
 
@@ -192,10 +193,11 @@ function formatPrice(price) {
 
 .empty-cart > i {
   font-size: 40px;
-
-  color: #87576b;
-
+  padding: 20px;
+  color: #a2c2dd;
+  background: #feefb8;
   margin-bottom: 20px;
+  border-radius: 50%;
 }
 
 .empty-cart h2 {
@@ -217,7 +219,7 @@ function formatPrice(price) {
 
   border-radius: 999px;
 
-  background: #87576b;
+  background: #a2c2dd;
 
   color: white;
 

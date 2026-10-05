@@ -9,12 +9,12 @@ const categories = [
 </script>
 
 <template>
-  <section class="container-wide pb-12 pt-12 sm:pb-20 sm:pt-14">
+  <section class="container-wide pb-12 pt-12 sm:pb-20 sm:pt-14 bg-[#FFFBEB]">
     <div class="product-brand-grid">
       <router-link
         v-for="category in categories"
         :key="category.name"
-        :to="`/${category.slug}`"
+        :to="`/${category.slug}`" 
         class="category-card"
       >
         <img :src="category.image" :alt="category.name" />
@@ -28,6 +28,7 @@ const categories = [
 </template>
 
 <style scoped>
+
 .product-brand-grid {
   display: grid;
   /* EXACTLY 3 columns */

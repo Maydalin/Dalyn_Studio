@@ -157,9 +157,9 @@ function buyNow(product) {
 
 <template>
   <section class="container-wide pb-12 pt-8 sm:pb-20 sm:pt-10">
-    <button type="button" class="back-button" @click="$router.back()">
+    <!-- <button type="button" class="back-button" @click="$router.back()">
       <i class="fa-solid fa-arrow-left"></i>Back
-    </button>
+    </button> -->
     <div class="brand-header">
       <div class="brand-title">MUVA</div>
     </div>
@@ -243,11 +243,15 @@ function buyNow(product) {
   margin-top: 10px;
 }
 .brand-title {
-  margin: 0;
-  font-size: 40px;
+  margin-top: 0;
+  font-size: 36px;
+  padding: 10px 20px;
+  border-radius: 999px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.03em;
+  background: #feefb8;
+  color: #a2c2dd;
 }
 
 .product-grid {
@@ -346,7 +350,7 @@ function buyNow(product) {
 }
 
 .color-dot.selected {
-  outline: 1px solid #87576b;
+  outline: 1px solid #432f2e;
   outline-offset: 2px;
 }
 
@@ -362,25 +366,27 @@ function buyNow(product) {
 }
 .add-button {
   width: 94px;
-  border: 1px solid #87576b;
-  color: #87576b;
+  border: 1px solid #a2c2dd;
+  color: #a2c2dd;
   background: transparent;
   margin-right: 8px;
 }
 .buy-button {
   width: 70%;
   flex: 1;
-  border: 1px solid #87576b;
+  border: 1px solid #a2c2dd;
   color: white;
-  background: #87576b;
+  background: #a2c2dd;
 }
 .add-button:hover {
   background: #d9d9d9;
-  color: #87576b;
+  color: #a2c2dd;
   border: none;
 }
 .buy-button:hover {
-  background: #714759;
+  background: #feefb8;
+  border: none;
+  color: #a2c2dd;
 }
 
 @media (max-width: 639px) {

@@ -442,14 +442,17 @@ Thank you!
   cursor: pointer;
 }
 
-.whatsapp-button,
+.whatsapp-button {
+  background: #feefb8;
+  color: #a2c2dd;
+}
 .send-button {
-  background: #f4f4f4;
-  color: #87576b;
+  background: #a2c2dd;
+  color: white;
 }
 
 .receipt-button {
-  background: #87576b;
+  background: #a2c2dd;
   color: white;
 }
 
@@ -472,7 +475,7 @@ Thank you!
 }
 
 .form-group label span {
-  color: #87576b;
+  color: #a2c2dd;
 }
 
 .form-group input,
@@ -490,7 +493,7 @@ Thank you!
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #87576b;
+  border-color: #a2c2dd;
 }
 
 .form-row {
